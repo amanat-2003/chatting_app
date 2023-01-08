@@ -1,5 +1,5 @@
 import 'package:chatting_app/helper/helper_function.dart';
-import 'package:chatting_app/pages/auth/login_page.dart';
+import 'package:chatting_app/pages/auth/login_register_page.dart';
 import 'package:chatting_app/service/functions.dart';
 import 'package:chatting_app/shared/constants.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -63,7 +63,7 @@ class _MyAppState extends State<MyApp> {
         primarySwatch: createMaterialColor(const Color.fromARGB(255, 238, 104, 14)),
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: _isSignedIn ? const HomePage() : const LoginPage(),
+      home: _isSignedIn ? const HomePage() : const LoginRegisterPage(),
     );
   }
 }
