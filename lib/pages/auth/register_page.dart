@@ -15,7 +15,7 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final formKey = GlobalKey<FormState>();
 
-  login() {
+  register() {
     if (formKey.currentState!.validate()) {}
   }
 
@@ -47,7 +47,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 'assets/register.png',
                 width: double.infinity,
               ),
-              FormFieldWiget(formKey: formKey, login: login,toRegister: true),
+              FormFieldWiget(formKey: formKey, auth: register,toRegister: true),
               const SizedBox(height: 5),
               Text.rich(TextSpan(
                 text: 'Already have an account?',

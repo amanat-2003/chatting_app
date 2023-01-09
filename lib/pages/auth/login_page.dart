@@ -48,7 +48,7 @@ class _LoginPageState extends State<LoginPage> {
                 'assets/login.png',
                 width: double.infinity,
               ),
-              FormFieldWiget(formKey: formKey, login: login,toRegister: false,),
+              FormFieldWiget(formKey: formKey, auth: login,toRegister: false,),
               const SizedBox(height: 5),
               Text.rich(TextSpan(
                 text: 'Don\'t have an account?',
