@@ -60,7 +60,8 @@ class YanamnDrawer extends StatelessWidget {
           onTap: (selected == IsSelected.Profile)
               ? () {}
               : () {
-                  nextScreenReplacement(context, const ProfilePage());
+                  nextScreenReplacement(
+                      context, ProfilePage(fullName: fullName, email: email));
                 },
         ),
         DrawerTile(
@@ -78,7 +79,10 @@ class YanamnDrawer extends StatelessWidget {
                   actions: [
                     IconButton(
                         onPressed: () => Navigator.of(context).pop(),
-                        icon: const Icon(Icons.cancel_outlined, color: Colors.red,)),
+                        icon: const Icon(
+                          Icons.cancel_outlined,
+                          color: Colors.red,
+                        )),
                     IconButton(
                         onPressed: () async {
                           await AuthService().signOut();
@@ -91,7 +95,10 @@ class YanamnDrawer extends StatelessWidget {
                           //     nextScreenReplacement(
                           //         context, const LoginPage()));
                         },
-                        icon: const Icon(Icons.done, color: Colors.green,)),
+                        icon: const Icon(
+                          Icons.done,
+                          color: Colors.green,
+                        )),
                   ],
                 );
               },
