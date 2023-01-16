@@ -29,3 +29,15 @@ void nextScreenReplacement(context, page) {
     builder: (context) => page,
   ));
 }
+
+void displaySnackBar(context, color, message) {
+  ScaffoldMessenger.of(context)..hideCurrentSnackBar()..showSnackBar(SnackBar(
+    content: Text(message),
+    // backgroundColor: color,
+    duration: const Duration(seconds: 60),
+    action: SnackBarAction(
+      label: 'Ok',
+      onPressed: () {},
+    ),
+  ));
+}

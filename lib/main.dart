@@ -49,9 +49,13 @@ class _MyAppState extends State<MyApp> {
     // });
     var val = await HelperFunctions.getUserLoggedInStatus();
     if (val != null) {
-      _isSignedIn = val;
+      setState(() {
+        _isSignedIn = val;
+      });
     } else {
-      _isSignedIn = false;
+      setState(() {
+        _isSignedIn = false;
+      });
     }
   }
 
@@ -60,10 +64,12 @@ class _MyAppState extends State<MyApp> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: createMaterialColor(const Color.fromARGB(255, 238, 104, 14)),
+        primarySwatch:
+            createMaterialColor(const Color.fromARGB(255, 238, 104, 14)),
         scaffoldBackgroundColor: Colors.white,
       ),
       home: _isSignedIn ? const HomePage() : const LoginRegisterPage(),
+      // home: const ButtonScreen(),
     );
   }
 }
