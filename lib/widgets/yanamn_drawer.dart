@@ -1,11 +1,18 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:chatting_app/pages/home_page.dart';
+import 'package:chatting_app/pages/profile_page.dart';
+import 'package:chatting_app/service/auth_service.dart';
+import 'package:chatting_app/widgets/widgets.dart';
 import 'package:flutter/material.dart';
+
+import '../pages/auth/login_page.dart';
 
 enum IsSelected
 // ignore: constant_identifier_names
 { Groups, Profile, SignOut }
 
 class YanamnDrawer extends StatelessWidget {
+  // AuthService authService = AuthService();
   const YanamnDrawer({
     Key? key,
     required this.fullName,
@@ -37,11 +44,60 @@ class YanamnDrawer extends StatelessWidget {
         const Divider(),
         const SizedBox(height: 15),
         DrawerTile(
-            selected: (selected == IsSelected.Groups), icon: Icons.groups_sharp, title: 'Groups'),
+          selected: (selected == IsSelected.Groups),
+          icon: Icons.groups_sharp,
+          title: 'Groups',
+          onTap: (selected == IsSelected.Groups)
+              ? () {}
+              : () {
+                  nextScreenReplacement(context, const HomePage());
+                },
+        ),
         DrawerTile(
-            selected: (selected == IsSelected.Profile), icon: Icons.account_circle, title: 'Profile'),
+          selected: (selected == IsSelected.Profile),
+          icon: Icons.account_circle,
+          title: 'Profile',
+          onTap: (selected == IsSelected.Profile)
+              ? () {}
+              : () {
+                  nextScreenReplacement(context, const ProfilePage());
+                },
+        ),
         DrawerTile(
-            selected: (selected == IsSelected.SignOut), icon: Icons.exit_to_app, title: 'Sign Out'),
+          selected: (selected == IsSelected.SignOut),
+          icon: Icons.exit_to_app,
+          title: 'Sign Out',
+          onTap: () async {
+            showDialog(
+              barrierDismissible: false,
+              context: context,
+              builder: (context) {
+                return AlertDialog(
+                  title: const Text('Logout'),
+                  content: const Text('Are you sure you want to logout?'),
+                  actions: [
+                    IconButton(
+                        onPressed: () => Navigator.of(context).pop(),
+                        icon: const Icon(Icons.cancel_outlined, color: Colors.red,)),
+                    IconButton(
+                        onPressed: () async {
+                          await AuthService().signOut();
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                builder: (context) => const LoginPage(),
+                              ),
+                              (route) => false);
+                          // AuthService().signOut().whenComplete(() =>
+                          //     nextScreenReplacement(
+                          //         context, const LoginPage()));
+                        },
+                        icon: const Icon(Icons.done, color: Colors.green,)),
+                  ],
+                );
+              },
+            );
+          },
+        ),
       ],
     ));
   }
