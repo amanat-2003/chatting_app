@@ -47,7 +47,16 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.search)),
         ],
       ),
-      drawer: YanamnDrawer(fullName: fullName, email: email, selected: IsSelected.Groups,),
+      drawer: YanamnDrawer(
+        fullName: fullName,
+        email: email,
+        selected: IsSelected.Groups,
+      ),
+      body: groupList(),
     );
+  }
+
+  groupList(){
+    // return StreamBuilder(builder: builder);
   }
 }
