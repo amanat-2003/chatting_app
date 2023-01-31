@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:chatting_app/helper/helper_function.dart';
 import 'package:chatting_app/pages/search_page.dart';
-import 'package:chatting_app/service/auth_service.dart';
 import 'package:chatting_app/widgets/widgets.dart';
 
 import '../widgets/yanamn_drawer.dart';
@@ -48,7 +47,16 @@ class _HomePageState extends State<HomePage> {
               icon: const Icon(Icons.search)),
         ],
       ),
-      drawer: YanamnDrawer(fullName: fullName, email: email, selected: IsSelected.Groups,),
+      drawer: YanamnDrawer(
+        fullName: fullName,
+        email: email,
+        selected: IsSelected.Groups,
+      ),
+      body: groupList(),
     );
+  }
+
+  groupList(){
+    // return StreamBuilder(builder: builder);
   }
 }
