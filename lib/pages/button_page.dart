@@ -10,7 +10,7 @@ class ButtonScreen extends StatefulWidget {
 
 class _ButtonScreenState extends State<ButtonScreen> {
   bool _isPressed = false;
-  bool _isDarkMode = true;
+  final bool _isDarkMode = true;
 
   @override
   Widget build(BuildContext context) {
